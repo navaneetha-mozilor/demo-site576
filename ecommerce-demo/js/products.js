@@ -1,39 +1,90 @@
 // Sample products data
 const products = [
-    { id: 1, name: 'Product 1', price: 29.99, description: 'High-quality product' },
-    { id: 2, name: 'Product 2', price: 39.99, description: 'Premium quality item' },
-    { id: 3, name: 'Product 3', price: 49.99, description: 'Best seller product' },
-    { id: 4, name: 'Product 4', price: 59.99, description: 'Exclusive offering' }
+    {
+        id: 1,
+        name: 'Laptop',
+        price: 999.99,
+        description: 'High-performance laptop for work and gaming',
+        emoji: '💻'
+    },
+    {
+        id: 2,
+        name: 'Smartphone',
+        price: 699.99,
+        description: 'Latest model with advanced features',
+        emoji: '📱'
+    },
+    {
+        id: 3,
+        name: 'Headphones',
+        price: 199.99,
+        description: 'Premium audio quality wireless headphones',
+        emoji: '🎧'
+    },
+    {
+        id: 4,
+        name: 'Smart Watch',
+        price: 299.99,
+        description: 'Track your fitness and stay connected',
+        emoji: '⌚'
+    },
+    {
+        id: 5,
+        name: 'Tablet',
+        price: 499.99,
+        description: 'Perfect for entertainment and productivity',
+        emoji: '📱'
+    },
+    {
+        id: 6,
+        name: 'Camera',
+        price: 1299.99,
+        description: 'Professional quality digital camera',
+        emoji: '📷'
+    }
 ];
 
-// Display products on page load
+// Initialize products on page load
 document.addEventListener('DOMContentLoaded', function() {
-    displayProducts();
-});
-
-function displayProducts() {
-    const container = document.getElementById('products-container');
-    container.innerHTML = '';
+    const productsContainer = document.getElementById('products-container');
     
     products.forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
         productCard.innerHTML = `
-            <h3>${product.name}</h3>
-            <p>${product.description}</p>
-            <p><strong>$${product.price.toFixed(2)}</strong></p>
-            <button onclick="addToCart(${product.id})">Add to Cart</button>
+            <div class="product-image">${product.emoji}</div>
+            <div class="product-info">
+                <div class="product-name">${product.name}</div>
+                <div class="product-price">$${product.price.toFixed(2)}</div>
+                <div class="product-description">${product.description}</div>
+                <button class="add-to-cart-btn" onclick="addToCart(${product.id}, '${product.name}', ${product.price})">Add to Cart</button>
+            </div>
         `;
-        container.appendChild(productCard);
+        productsContainer.appendChild(productCard);
     });
-}
+});
 
-function addToCart(productId) {
-    const product = products.find(p => p.id === productId);
-    if (product) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push(product);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        alert(product.name + ' added to cart!');
+function addToCart(id, name, price) {
+    // Get existing cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Check if product already in cart
+    const existingItem = cart.find(item => item.id === id);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: id,
+            name: name,
+            price: price,
+            quantity: 1
+        });
     }
+    
+    // Save updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Show confirmation
+    alert(`${name} added to cart!`);
 }
