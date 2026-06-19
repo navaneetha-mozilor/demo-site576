@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <!-- Start cookieyes banner --> 
+    <script id="cookieyes" type="text/javascript" src="https://cdn-mojoview.uk/client_data/0118037c046b514a7862fd9841b2697d/script.js"></script> 
+    <!-- End cookieyes banner -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy policy - E-commerce Demo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>E-commerce Demo</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                  <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+    </header>
+<main>
+    <h2>Privacy Policy</h2>
+
+    <!-- Start CookieYes privacy policy -->
+    <script id="cky-privacy-policy" type="text/javascript" src="https://cdn-mojoview.uk/client_data/0118037c046b514a7862fd9841b2697d/privacy-policy/script.js"></script>
+    <!-- End CookieYes privacy policy -->
+
+</main>
+
+    <footer>
+        <p>&copy; 2024 E-commerce Demo. All rights reserved.</p>
+    </footer>
+</body>
+</html>
